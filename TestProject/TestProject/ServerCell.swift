@@ -29,11 +29,11 @@ class ServerCell: UITableViewCell {
             cpuStatus.text = server.statusValue
             
             switch server.status {
-            case .Active: status.backgroundColor = .green
-            case .Unknown: status.backgroundColor = .lightGray
-            case .Running: status.backgroundColor = .orange
-            case .Slow: status.backgroundColor = .yellow
-            case .Down: status.backgroundColor = .red
+            case .active: status.backgroundColor = .green
+            case .unknown: status.backgroundColor = .lightGray
+            case .running: status.backgroundColor = .orange
+            case .slow: status.backgroundColor = .yellow
+            case .down: status.backgroundColor = .red
             }
         }
     }

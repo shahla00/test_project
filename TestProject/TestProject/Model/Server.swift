@@ -9,11 +9,11 @@
 import Foundation
 
 enum ServerStatus: Int {
-    case Unknown = 0
-    case Active
-    case Running
-    case Slow
-    case Down
+    case unknown = 0
+    case active
+    case running
+    case slow
+    case down
 }
 
 class Server {
@@ -21,6 +21,6 @@ class Server {
     var serverName: String?
     var ipAddress: String?
     var devideIP: String?
-    var status = ServerStatus.Unknown
+    var status = ServerStatus.unknown
     var statusValue: String?
 }

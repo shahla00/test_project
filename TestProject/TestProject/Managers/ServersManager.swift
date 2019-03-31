@@ -33,7 +33,7 @@ class ServersManager {
                         server.ipAddress = serverObject["ipAddress"] as? String
                         server.devideIP = serverObject["ipSubnetMask"] as? String
                         let statusObject = serverObject["status"] as? [String: Any]
-                        server.status = self?.getStatus(statusObject) ?? ServerStatus.Unknown
+                        server.status = self?.getStatus(statusObject) ?? ServerStatus.unknown
                         server.statusValue = statusObject?["statusValue"] as? String
                         servers.append(server)
                     }
@@ -49,11 +49,11 @@ class ServersManager {
     private func getStatus(_ statusObject: [String: Any]?) -> ServerStatus {
         let statusCode = statusObject?["id"] as? Int
         switch statusCode {
-        case 1: return ServerStatus.Active
-        case 2: return ServerStatus.Running
-        case 3: return ServerStatus.Slow
-        case 4: return ServerStatus.Down
-        default: return ServerStatus.Unknown
+        case 1: return ServerStatus.active
+        case 2: return ServerStatus.running
+        case 3: return ServerStatus.slow
+        case 4: return ServerStatus.down
+        default: return ServerStatus.unknown
         }
     }
 }
