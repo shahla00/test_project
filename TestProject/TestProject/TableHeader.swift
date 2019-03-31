@@ -9,16 +9,20 @@
 import UIKit
 
 class TableHeader: UIView {
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var allContainer: UIView!
     @IBOutlet weak var activeContainer: UIView!
     @IBOutlet weak var downContainer: UIView!
     @IBOutlet weak var allLocationsContainer: UIView!
     @IBOutlet weak var allLocationsButton: UIButton!
+    @IBOutlet weak var serversCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        searchBar.layer.cornerRadius = 50
         allContainer.layer.cornerRadius = 20
+        serversCount.layer.cornerRadius = 10
         
         activeContainer.layer.borderWidth = 1
         activeContainer.layer.borderColor = UIColor.lightGray.cgColor

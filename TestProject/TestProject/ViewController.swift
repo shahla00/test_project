@@ -11,11 +11,14 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var userIcon: UIButton!
     
     var servers = [Server]() {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.table.reloadData()
+                (self?.table.tableHeaderView as? TableHeader)?.serversCount.text =
+                    self?.servers.count.description
             }
         }
     }
@@ -31,6 +34,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userIcon.imageView?.layer.cornerRadius = (userIcon.imageView?.frame.width ?? 0) / 2
+        
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "ServerCell", bundle: nil), forCellReuseIdentifier: "ServerCell")
@@ -39,7 +44,6 @@ class ViewController: UIViewController {
         table.tableHeaderView?.frame.size.height = 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-        
         ServersManager.shared.fetchData();
     }
     
