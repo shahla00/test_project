@@ -16,7 +16,7 @@ class ServersManager {
     /// Fetches the servers data from the server
     ///
     func fetchData() {
-        guard let url = URL(string: "http://www.mocky.io/v2/5c5c46f13900005a18e05b90") else { return }
+        guard let url = URL(string: EnvironmentManager.shared.configuration(PlistKey.url)) else { return }
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let dataResponse = data, error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
