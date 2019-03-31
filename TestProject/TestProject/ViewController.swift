@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         table.delegate = self
         table.register(UINib(nibName: "ServerCell", bundle: nil), forCellReuseIdentifier: "ServerCell")
         table.register(UINib(nibName: "SectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "SectionHeader")
+        table.tableHeaderView = Bundle.main.loadNibNamed("TableHeader", owner: self, options: nil)?[0] as? UIView
+        table.tableHeaderView?.frame.size.height = 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         
@@ -59,7 +61,7 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return -1
+            return 0
         }
         
         return 50
